@@ -1,7 +1,6 @@
 #!/bin/python3
 
 from collections import deque
-import copy
 
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
@@ -42,7 +41,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     while deck:
         curr_stack = deck.popleft()
         for word in dictionary_file:
-            if _adjacent(word, curr_stack[0]) == True:
+            if _adjacent(word, curr_stack[0]) is True:
                 if word == end_word:
                     final_word_ladder = curr_stack.append(word)
                     return (final_word_ladder)
