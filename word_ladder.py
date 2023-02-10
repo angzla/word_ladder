@@ -33,11 +33,11 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     '''
     stack = []
     stack.append(start_word)
-    deck = []
+    deck = deque()
     deck.append(stack)
-    while len(deck) > 0: 
+    while len(deck) > 0:
         deck.popleft()
-        for word in dictionary_file: 
+        for word in dictionary_file:
             if _adjacent(word, stack[0]):
                 print(stack[0])
                 if word == end_word:
