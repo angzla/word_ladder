@@ -3,6 +3,7 @@
 from collections import deque
 import copy
 
+
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     '''
     Returns a list satisfying the following properties:
@@ -34,13 +35,12 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     stack.append(start_word)
     deck = []
     deck.append(stack)
-
     while len(deck) > 0: 
         deck.popleft()
         for word in dictionary_file: 
             if _adjacent(word, stack[0]):
                 print(stack[0])
-                if word == end_word: 
+                if word == end_word:
                     final_word_ladder = stack.append(word)
                     print(final_word_ladder)
                 stack_copy = copy.copy(stack)
@@ -48,6 +48,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 deck.append(stack_copy)
                 dictionary_file[-word]
     return 'None'
+
 
 def verify_word_ladder(ladder):
     '''
@@ -59,8 +60,8 @@ def verify_word_ladder(ladder):
     >>> verify_word_ladder(['stone', 'shone', 'phony'])
     False
     '''
-    for x in range(len(ladder)-1):
-        if _adjacent(ladder[x], ladder[x+1]) is False:
+    for x in range(len(ladder) - 1):
+        if _adjacent(ladder[x], ladder[x + 1]) is False:
             return False
     return True
 
