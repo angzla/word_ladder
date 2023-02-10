@@ -31,22 +31,23 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     Whenever it is impossible to generate a word ladder between the two words,
     the function returns `None`.
     '''
+    if end not in dictionary_file: 
+        return None
     stack = []
     stack.append(start_word)
     deck = deque()
     deck.append(stack)
-    while len(deck) > 0:
+    while deck:
         deck.popleft()
         for word in dictionary_file:
             if _adjacent(word, stack[0]):
-                print(stack[0])
                 if word == end_word:
                     final_word_ladder = stack.append(word)
-                    print(final_word_ladder)
+                    return(final_word_ladder)
                 stack_copy = copy.copy(stack)
                 stack_copy.append(word)
                 deck.append(stack_copy)
-                dictionary_file[-word]
+                dictionary_file.remove(word)
     return 'None'
 
 
@@ -60,6 +61,8 @@ def verify_word_ladder(ladder):
     >>> verify_word_ladder(['stone', 'shone', 'phony'])
     False
     '''
+    if len(ladder) == 0: 
+        return False
     for x in range(len(ladder) - 1):
         if _adjacent(ladder[x], ladder[x + 1]) is False:
             return False
