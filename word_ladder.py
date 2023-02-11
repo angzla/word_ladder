@@ -43,8 +43,8 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
         for word in dictionary_file:
             if _adjacent(word, curr_stack[0]) is True:
                 if word == end_word:
-                    final_word_ladder = curr_stack.append(word)
-                    return (final_word_ladder)
+                    curr_stack.append(word)
+                    return (curr_stack)
 
                 new_stack = curr_stack[:]
                 new_stack.append(word)
