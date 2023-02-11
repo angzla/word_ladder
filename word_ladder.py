@@ -41,7 +41,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     while len(deck) > 0:
         curr_stack = deck.popleft()
         for word in dictionary_file:
-            if _adjacent(word, curr_stack[0]) is True:
+            if _adjacent(word, curr_stack[-1]) is True:
                 if word == end_word:
                     curr_stack.append(word)
                     return (curr_stack)
